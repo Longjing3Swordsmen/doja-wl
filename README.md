@@ -1,2 +1,2 @@
 # doja
-Department of Jingan, 靖安司, 负责长安城监控/告警
+Department of Jingan, 靖安司, 长安城监控部门
