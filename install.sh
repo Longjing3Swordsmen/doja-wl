@@ -2,9 +2,11 @@
 
 dir="/root"
 
-mkdir $dir/doja
-cp -r apps conf logs supervisord $dir/doja
+doja=$dir/doja
 
-supervisorctl -c $dir/supervisord/supervisord.conf reload
+mkdir $doja
+cp -r apps conf logs supervisord $doja
+
+supervisord -c $doja/supervisord/supervisord.conf
 
 
