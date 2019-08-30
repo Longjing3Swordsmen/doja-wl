@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+ - name: 'Node Board'
+   orgId: 1
+   folder: ''
+   folderUid: ''
+   type: file
+   options:
+     path: dashboards
