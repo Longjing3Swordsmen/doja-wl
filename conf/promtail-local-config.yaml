@@ -15,25 +15,25 @@ scrape_configs:
       - localhost
     labels:
       job: prometheuslogs
-      __path__: /root/log/prometheus.log
+      __path__: /root/doja/logs/prometheus.log
 - job_name: node_exporter
   static_configs:
   - targets:
       - localhost
     labels:
       job: nodelogs
-      __path__: /root/log/node_exporter.log
+      __path__: /root/doja/logs/node_exporter.log
 - job_name: loki
   static_configs:
   - targets:
       - localhost
     labels:
       job: lokilogs
-      __path__: /root/log/loki.log
+      __path__: /root/doja/logs/loki.log
 - job_name: supervisord
   static_configs:
   - targets:
       - localhost
     labels:
       job: superlogs
-      __path__: /root/log/supervisord.log
+      __path__: /root/doja/logs/supervisord.log
