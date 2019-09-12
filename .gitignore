@@ -17,7 +17,7 @@
 *.egg
 *.pyc
 .cache
-build/
+./build/
 dist/
 .venv/
 .pytest_cache/
