@@ -1,0 +1,7 @@
+- labels:
+    exporter: host
+    ip: 127.0.0.1
+    product_type: doja
+    tid: "1"
+  targets:
+  - localhost:9100
