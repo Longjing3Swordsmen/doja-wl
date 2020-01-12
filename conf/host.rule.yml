@@ -1,0 +1,14 @@
+groups:
+  - name: dojawl-node
+    rules:
+    - alert: NodeLoad5
+      expr: node_load5{tid="1"}>0.1
+      labels:
+        severity: "critical"  # warning
+        service: senior
+      annotations:
+        alertname: "node_load5"
+        description: "5min 内系统平均负载"
+        errorcode: "DJ-001"
+        message: "DJ-001: 5min 内系统平均负载异常, 请及时检查!"
+        suggest: "top 查看"

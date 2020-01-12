@@ -1,0 +1,53 @@
+global:
+  smtp_smarthost: 'smtp.163.com:465'
+  smtp_from: 'vonhng@163.com'
+  smtp_auth_username: 'vonhng'
+  smtp_hello: 'doja-wl'
+  smtp_auth_password: 'Cljslrl0620'
+  smtp_require_tls: false
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: 'doja.default'
+  routes:
+    - receiver: 'doja.default'
+      match:
+        severity: critical
+      continue: true
+    - receiver: 'senior'
+      match_re:
+        service: s.*r # example: senior
+    - receiver: 'web.hook'
+      match:
+        service: webhook
+receivers:
+- name: 'doja.default'
+  email_configs:
+    - to: 'qianyong.feng@woqutech.com'
+      send_resolved: true
+      headers:
+        Subject: '{{  template  "userdefine.subject" .}}'
+      html: '{{ template "email.html" . }}'
+- name: 'senior'
+  email_configs:
+    - to: 'vonhng.feng@gmail.com'
+      send_resolved: true
+      headers:
+        Subject: '{{  template  "userdefine.subject" .}}'
+      html: '{{ template "email.html" . }}'
+- name: 'web.hook'
+  webhook_configs:
+  - url: 'http://127.0.0.1:5001/'
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
+templates:
+- '/root/doja/conf/*.tmpl'
